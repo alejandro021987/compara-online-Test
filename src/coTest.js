@@ -5,7 +5,6 @@ class Product {
     this.name = name;
     this.sellIn = sellIn;
     this.price = price;
-    this.code = conf.coverages[name].code;
   }
 }
 
