@@ -75,3 +75,13 @@ for (let i = 1; i <= 30; i += 1) {
   console.log('');
 }
 ```
+
+## You can check coverture run:
+```js
+npm run coverage-table
+npm run coverage-html
+npm run test
+
+```
+-- The script that you must run is src/after-30-days.js
+
