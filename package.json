@@ -4,11 +4,19 @@
   "description": "ComparaOnline Software Engineer Test",
   "main": "index.js",
   "scripts": {
-    "test": "mocha spec/*.js"
+    "test": "mocha spec/*.js",
+    "coverage-table": "nyc  ./node_modules/mocha/bin/mocha spec/*.js"
+  },
+  "nyc": {
+    "include": [
+      "src/*.js"
+    ],
+    "exclude": [],
+    "all": true
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/comparaonline/test-software-engineer.git"
+    "url": "git+https://github.com/alejandro021987/compara-online-Test.git"
   },
   "keywords": [
     "comparaonline",
@@ -25,5 +33,10 @@
   "devDependencies": {
     "chai": "^4.1.2",
     "mocha": "^4.0.1"
+  },
+  "dependencies": {
+    "coverage": "^0.4.1",
+    "eslint": "^7.13.0",
+    "nyc": "^15.1.0"
   }
 }
