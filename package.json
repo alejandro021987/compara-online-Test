@@ -5,13 +5,14 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha spec/*.js",
-    "coverage-table": "nyc  ./node_modules/mocha/bin/mocha spec/*.js"
+    "coverage-table": "nyc  ./node_modules/mocha/bin/mocha spec/*.js",
+    "coverage-html": "nyc --reporter=html  ./node_modules/mocha/bin/mocha spec/*.js"
   },
   "nyc": {
     "include": [
       "src/*.js"
     ],
-    "exclude": [],
+    "exclude": ["src/after-30-days.js"],
     "all": true
   },
   "repository": {
