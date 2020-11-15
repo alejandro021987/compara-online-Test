@@ -1,10 +1,11 @@
-const cov = require('./config/config').coverages;
+const conf = require('./config/config');
 
 class Product {
   constructor(name, sellIn, price) {
     this.name = name;
     this.sellIn = sellIn;
     this.price = price;
+    this.code = conf.coverages[name].code;
   }
 }
 
@@ -13,6 +14,39 @@ class CarInsurance {
     this.products = products;
   }
   updatePrice() {
+    this.products.forEach(product => {
+      switch (product.name) {
+        case 'Low Coverage', 'Medium Coverage', 'Super Sale':
+          if ( product.sellIn > 0)
+            product.price += conf.coverages[product.name].upgradeVal;
+          else {
+            product.price += 2*conf.coverages[product.name].upgradeVal;
+          }
+          break;
+        case 'Full Coverage', 'Special Full Coverage':
+          if(product.sellIn <= 0){
+            product.price = 0;
+          } else if (product.sellIn > 10 )
+            product.price += conf.coverages[product.name].upgradeVal;
+          else if (product.sellIn > 5) 
+            product.price += 2*conf.coverages[product.name].upgradeVal;
+          else 
+            product.price += 3*conf.coverages[product.name].upgradeVal;
+          break;
+        
+        default:
+          break;
+      }
+
+      if (product.name != 'Mega Coverage') {
+        product.sellIn = product.sellIn - 1;
+        if ( product.price > conf.MAX_PRICE)
+        product.price = conf.MAX_PRICE;
+      }
+
+    });
+
+/*
     for (var i = 0; i < this.products.length; i++) {
       if (this.products[i].name != cov.FULL_COV.name && this.products[i].name != cov.SPECIAL_FUL_COV.name) {
         if (this.products[i].price > 0) {
@@ -68,6 +102,9 @@ class CarInsurance {
         }
       }
     }
+*/
+    
+    
 
     return this.products;
   }

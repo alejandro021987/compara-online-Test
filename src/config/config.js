@@ -1,11 +1,11 @@
 module.exports = {
   coverages: {
-    LOW_COV : { name: 'Low Coverage', degradeVal: 1, degradeOff:2 },
-    MEDIUM_COV: {name: 'Medium Coverage', degradeVal: 1, degradeOff:2 },
-    FULL_COV: { name: 'Full Coverage', degradeVal: -1, degradeOff:2 },
-    SPECIAL_FUL_COV: { name: 'Special Full Coverage', degradeVal: -1, degradeOff:-1 },
-    MEGA_COV: { name: 'Mega Coverage', degradeVal: 0, degradeOff:0 },
-    SUPER_SALE: { name: 'Super Sale', degradeVal: 2, degradeOff:4 }
-  }
-
+    'Low Coverage' : { upgradeVal: -1, degradeOff:2, code: 1},
+    'Medium Coverage': { upgradeVal: -1, degradeOff:2, code: 2},
+    'Full Coverage': { upgradeVal: 1, degradeOff:2, code: 3},
+    'Special Full Coverage': { upgradeVal: 1, degradeOff:-1, code: 4},
+    'Mega Coverage': { upgradeVal: 0, degradeOff:0, code: 5},
+    'Super Sale': { upgradeVal: -2, degradeOff:4, code: 6}
+  },
+  MAX_PRICE: 50
 }
