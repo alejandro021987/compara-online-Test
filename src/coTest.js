@@ -14,16 +14,21 @@ class CarInsurance {
   }
   updatePrice() {
     for (var i = 0; i < this.products.length; i++) {
-      if (this.products[i].name != cov.FULL_COV && this.products[i].name != cov.SPECIAL_FUL_COV) {
+      if (this.products[i].name != cov.FULL_COV.name && this.products[i].name != cov.SPECIAL_FUL_COV.name) {
         if (this.products[i].price > 0) {
-          if (this.products[i].name != cov.MEGA_COV) {
-            this.products[i].price = this.products[i].price - 1;
+          if (this.products[i].name != cov.MEGA_COV.name) {
+            if(this.products[i].name == cov.SUPER_SALE.name){
+              this.products[i].price = this.products[i].price - cov.SUPER_SALE.degradeVal;
+            }else{
+              this.products[i].price = this.products[i].price - 1;
+            }
+
           }
         }
       } else {
         if (this.products[i].price < 50) {
           this.products[i].price = this.products[i].price + 1;
-          if (this.products[i].name == cov.SPECIAL_FUL_COV) {
+          if (this.products[i].name == cov.SPECIAL_FUL_COV.name) {
             if (this.products[i].sellIn < 11) {
               if (this.products[i].price < 50) {
                 this.products[i].price = this.products[i].price + 1;
@@ -37,15 +42,20 @@ class CarInsurance {
           }
         }
       }
-      if (this.products[i].name != cov.MEGA_COV) {
+      if (this.products[i].name != cov.MEGA_COV.name) {
         this.products[i].sellIn = this.products[i].sellIn - 1;
       }
       if (this.products[i].sellIn < 0) {
-        if (this.products[i].name != cov.FULL_COV) {
-          if (this.products[i].name != cov.SPECIAL_FUL_COV) {
+        if (this.products[i].name != cov.FULL_COV.name) {
+          if (this.products[i].name != cov.SPECIAL_FUL_COV.name) {
             if (this.products[i].price > 0) {
-              if (this.products[i].name != cov.MEGA_COV) {
-                this.products[i].price = this.products[i].price - 1;
+              if (this.products[i].name != cov.MEGA_COV.name) {
+                if(this.products[i].name == cov.SUPER_SALE.name){
+                  this.products[i].price = this.products[i].price - cov.SUPER_SALE.degradeOff;
+                }else{
+                  this.products[i].price = this.products[i].price - 2;
+                }
+
               }
             }
           } else {
